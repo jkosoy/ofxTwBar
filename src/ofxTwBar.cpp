@@ -3,7 +3,7 @@
  All rights reserved.
  
  Bridge to AntTweakBar - "a light and intuitive graphical user interface" - <http://www.antisphere.com/Wiki/tools:anttweakbar>
-
+ 
  Based on code from Cinder Lib.
  
  Redistribution and use in source and binary forms, with or without modification, are permitted provided that
@@ -30,7 +30,7 @@ using namespace std;
 
 //--------------------------------------------------------------
 ofxTwBar::ofxTwBar() {
-
+    
 }
 
 //--------------------------------------------------------------
@@ -71,29 +71,31 @@ void ofxTwBar::draw() {
 
 //--------------------------------------------------------------
 void ofxTwBar::enable(bool enableMousePressed) {
-//	ofAddListener(ofEvents.update, this, &ofxTwBar::update);
-//	ofAddListener(ofEvents.draw, this, &ofxTwBar::draw);
-	ofAddListener(ofEvents.windowResized, this, &ofxTwBar::resize);
+    //	ofAddListener(ofEvents.update, this, &ofxTwBar::update);
+    //	ofAddListener(ofEvents.draw, this, &ofxTwBar::draw);
+    
+    
+	ofAddListener(ofEvents().windowResized, this, &ofxTwBar::resize);
 	
-	ofAddListener(ofEvents.keyPressed, this, &ofxTwBar::keyPressed);
-	ofAddListener(ofEvents.mouseDragged, this, &ofxTwBar::mouseDragged);
-	ofAddListener(ofEvents.mouseMoved, this, &ofxTwBar::mouseMoved);
+	ofAddListener(ofEvents().keyPressed, this, &ofxTwBar::keyPressed);
+	ofAddListener(ofEvents().mouseDragged, this, &ofxTwBar::mouseDragged);
+	ofAddListener(ofEvents().mouseMoved, this, &ofxTwBar::mouseMoved);
 	if(enableMousePressed)
-		ofAddListener(ofEvents.mousePressed, this, &ofxTwBar::mousePressed);
-	ofAddListener(ofEvents.mouseReleased, this, &ofxTwBar::mouseReleased);
+		ofAddListener(ofEvents().mousePressed, this, &ofxTwBar::mousePressed);
+	ofAddListener(ofEvents().mouseReleased, this, &ofxTwBar::mouseReleased);
 }
 
 //--------------------------------------------------------------
 void ofxTwBar::disable() {
-//	ofRemoveListener(ofEvents.update, this, &ofxTwBar::update);
-//	ofRemoveListener(ofEvents.draw, this, &ofxTwBar::draw);
-	ofRemoveListener(ofEvents.windowResized, this, &ofxTwBar::resize);
+    //	ofRemoveListener(ofEvents.update, this, &ofxTwBar::update);
+    //	ofRemoveListener(ofEvents.draw, this, &ofxTwBar::draw);
+	ofRemoveListener(ofEvents().windowResized, this, &ofxTwBar::resize);
 	
-	ofRemoveListener(ofEvents.keyPressed, this, &ofxTwBar::keyPressed);
-	ofRemoveListener(ofEvents.mouseDragged, this, &ofxTwBar::mouseDragged);
-	ofRemoveListener(ofEvents.mouseMoved, this, &ofxTwBar::mouseMoved);
-	ofRemoveListener(ofEvents.mousePressed, this, &ofxTwBar::mousePressed);
-	ofRemoveListener(ofEvents.mouseReleased, this, &ofxTwBar::mouseReleased);
+	ofRemoveListener(ofEvents().keyPressed, this, &ofxTwBar::keyPressed);
+	ofRemoveListener(ofEvents().mouseDragged, this, &ofxTwBar::mouseDragged);
+	ofRemoveListener(ofEvents().mouseMoved, this, &ofxTwBar::mouseMoved);
+	ofRemoveListener(ofEvents().mousePressed, this, &ofxTwBar::mousePressed);
+	ofRemoveListener(ofEvents().mouseReleased, this, &ofxTwBar::mouseReleased);
 }
 
 //--------------------------------------------------------------
@@ -107,23 +109,23 @@ void ofxTwBar::implAddParam( const std::string &name, void *param, int type, con
 //--------------------------------------------------------------
 void ofxTwBar::addParam( const std::string &name, bool *param, const std::string &optionsStr, bool readOnly ) {
 	implAddParam( name, param, TW_TYPE_BOOLCPP, optionsStr, readOnly );
-} 
+}
 
 //--------------------------------------------------------------
 void ofxTwBar::addParam( const std::string &name, float *param, const std::string &optionsStr, bool readOnly, int type ) {
 	implAddParam( name, param, type, optionsStr, readOnly );
-} 
+}
 
 //--------------------------------------------------------------
 void ofxTwBar::addParam( const std::string &name, int *param, const std::string &optionsStr, bool readOnly )
 {
 	implAddParam( name, param, TW_TYPE_INT32, optionsStr, readOnly );
-} 
+}
 
 //--------------------------------------------------------------
 void ofxTwBar::addParam( const std::string &name, ofVec3f *param, const std::string &optionsStr, bool readOnly ) {
 	implAddParam( name, param, TW_TYPE_DIR3F, optionsStr, readOnly );
-} 
+}
 //
 //--------------------------------------------------------------
 void ofxTwBar::addParam( const std::string &name, ofQuaternion *param, const std::string &optionsStr, bool readOnly ) {
