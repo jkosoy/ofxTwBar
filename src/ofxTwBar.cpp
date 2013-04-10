@@ -28,6 +28,12 @@
 
 using namespace std;
 
+void TW_CALL CopyStdStringToClient(std::string& destinationClientString, const std::string& sourceLibraryString)
+{
+    // Copy the content of souceString handled by the AntTweakBar library to destinationClientString handled by your application
+    destinationClientString = sourceLibraryString;
+}
+
 //--------------------------------------------------------------
 ofxTwBar::ofxTwBar() {
     
@@ -51,7 +57,7 @@ void ofxTwBar::init( const std::string &title, const int w, const int h, const i
 	TwDefine( optionsStr );
 	
 	TwGLUTModifiersFunc(glutGetModifiers);
-	
+    TwCopyStdStringToClientFunc(CopyStdStringToClient);
 	mouseLocked = false;
 }
 
